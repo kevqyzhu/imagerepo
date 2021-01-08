@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block title%}Home{% endblock %}
+
+{% block content%}
+<h2>My Repository</h2>
+<section id="photos">
+    
+    {% for image in imRepo.image_set.all %}
+    <div class="img-wrap">
+        <a href="{% url 'delete_image' id=image.id loc='home'%}"><span class="close">&times;</span></a>
+        <div class="zoom">
+            <img src="{{ image.image.url }}">
+        </div>
+    </div>
+    {% endfor %}
+
+</section>
+
+<!-- <ul>
+    {% for image in imRepo.image_set.all %}
+        <li>{{image.description}}</li>
+        <img src="{{ image.image.url }}" width="500" height="600">
+        <a href="{% url 'delete_image' id=image.id loc='home'%}">Delete</a>
+    {% endfor %}
+</ul> -->
+
+{% endblock %}

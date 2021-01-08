@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+{% block title%}Search{% endblock %}
+
+{% block content%}
+<h2>Image Search</h2>
+<form method='GET' action=".">
+    <div class="input-group mb-2 mr-sm-2">
+        <input type="text" name="q" placeholder="Search Images">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-success" value="{{ query|escape }}">Search</button>
+        </div>
+    </div>
+</form> 
+
+{% if query %}
+    {% if results %}
+    <section id="photos">
+    
+        {% for image in results %}
+        <div class="img-wrap">
+            <a href="{% url 'delete_image' id=image.id loc='home'%}"><span class="close">&times;</span></a>
+            <div class="zoom">
+                <img src="{{ image.image.url }}">
+            </div>
+        </div>
+        {% endfor %}
+    
+    </section>
+    {% else %}
+       <p>Query returned no results.</p>
+    {% endif %}
+{% endif %} 
+
+{% endblock %}
+

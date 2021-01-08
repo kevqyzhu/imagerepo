@@ -36,6 +36,21 @@
                 margin-left: 80px; /* Same as the width of the sidebar */
                 padding: 20px 0px;
                 }
+            .wrap {
+                display: flex;
+                justify-content: space-between;
+                margin: 10px 0px;
+                }
+
+            .title {
+                overflow: hidden;
+                text-align: left;
+                position: relative;
+                margin: -15px 0px;
+                margin-bottom: 5px;
+                height: 60px;
+                font-family: Arial;
+                }
             .img-wrap {
                 position: relative;
                 display: inline-block;
@@ -115,7 +130,16 @@
         <div id="content", name="content", class="main">
             <div class="row justify-content-center">
                 <div class="col-8">
-                    <h1 class="mt-2">Shopify Image Repo Challenge</h1>
+                    <div class="wrap">
+                        <div class="title"> 
+                            <h1 class="mt-2">Shopify Image Repo Challenge</h1>
+                        </div>
+                        {%block logout %}
+                        <div class="logout">
+                            <a class="btn btn-dark" href="/logout" role="button">Logout</a>
+                        </div>
+                        {% endblock %}
+                    </div>
                     <hr class="mt-0 mb-4">
                         {% block content%}
                         {% endblock %}

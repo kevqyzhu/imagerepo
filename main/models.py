@@ -17,4 +17,9 @@ class Image(models.Model):
 
     def __str__(self):
         return self.description
+    
+    def delete(self, *args, **kwargs):
+        storage, path = self.image.storage, self.image.path
+        super(Image, self).delete(*args, **kwargs)
+        storage.delete(path)
 
